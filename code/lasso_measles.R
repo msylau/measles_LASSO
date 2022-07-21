@@ -101,10 +101,6 @@ if (country=="UK"){
 	time_in_year = cases_urban$X
 
 
-	vac_rate_by_intyear <- read.csv(paste(data_dir,"vacc4496_corrected.csv",sep=""))
-	vac_rate = data.frame(X=cases_urban$X, vac_rate=rep(NA,nrow(cases_urban)), year=as.numeric(paste("19",trunc(cases_urban$X),sep="")))
-	vac_rate = merge(vac_rate, vac_rate_by_intyear,by="year") %>% select(c("X.x","coverage.resulting.in.immunity")) %>% rename(X=X.x,coverage=coverage.resulting.in.immunity)
-
 	median_pop = apply(pop_urban[,-1],2,FUN=median)
 
 	names_cities <- colnames(cases_urban)[-1] # the first column is "X": time or lat/long
